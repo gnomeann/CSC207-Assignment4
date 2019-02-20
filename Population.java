@@ -63,40 +63,6 @@ public class Population {
    * Organism's energy level >= 10, it will reproduce (replacing a random Organism with a copy of
    * the reproducer)
    */
-  public void update2() {
-    Random rand = new Random(); // used
-                                // https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java
-    for (int i = 0; i < orgs.length; i++) {
-
-      orgs[i].update(); // requires more implementation
-      if (orgs[i].getType().contentEquals("Cooperator")) {
-        orgs[i].decrementEnergy();
-        for (int j = 0; j < orgs.length; j++) {
-          int otherOrg = rand.nextInt(numTotal);
-          orgs[otherOrg].incrementEnergy(); // needs finessing, turn into helper function?
-        }
-      } // Cooperator check
-
-      if (orgs[i].getType().contentEquals("PartialCooperator")) {
-        int coin = rand.nextInt(2);
-        if (coin == 0) {
-          orgs[i].decrementEnergy();
-          for (int j = 0; j < orgs.length; j++) {
-            int otherOrg = rand.nextInt(numTotal);
-            orgs[otherOrg].incrementEnergy(); // needs finessing
-          } // for
-        } // if
-      } // PartialCooperator check
-
-      // Handles reproduction
-      if (orgs[i].getEnergy() >= 10) {
-        Organism baby = orgs[i].reproduce();
-        int n = rand.nextInt(numTotal);
-        orgs[n] = baby;
-      }
-    }
-  }
-
   public void update() {
     Random rand = new Random(); // used
                                 // https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java
