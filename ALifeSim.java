@@ -26,10 +26,6 @@ public class ALifeSim {
     // tested partials by having a population of 16 defectors + 1 partial (1 tick run 5 times)
     // tested 'reproduce' with a population of 16 defectors (10 ticks)
 
-    for (int i = 0; i < 10; i++) {
-      System.out.println(pop.orgs[i].getEnergy());
-    }
-
     System.out.println("After " + args[0] + " ticks:");
     System.out.println("Cooperators = " + pop.getPopulationCounts()[0].getRight());
     System.out.println("Defectors   = " + pop.getPopulationCounts()[1].getRight());
